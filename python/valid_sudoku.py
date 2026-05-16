@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/valid-sudoku/
 # Synced by: LinkCode
-# Date: 16/05/2026, 01:30:46
+# Date: 16/05/2026, 01:38:31
 # ======================================
 
 
@@ -24,21 +24,21 @@ class Solution:
                 if row in rows:
                     if curr in rows[row]:
                         return False
-                    rows[row].append(curr)
+                    rows[row].add(curr)
                 else:
-                    rows[row] = [curr]
+                    rows[row] = set(curr)
                 if col in cols:
                     if curr in cols[col]:
                         return False
-                    cols[col].append(curr)
+                    cols[col].add(curr)
                 else:
-                    cols[col] = [curr]
+                    cols[col] = set(curr)
                 if grid in grids:
                     if curr in grids[grid]:
                         return False
-                    grids[grid].append(curr)
+                    grids[grid].add(curr)
                 else:
-                    grids[grid] = [curr]
+                    grids[grid] = set(curr)
         
         return True
 
