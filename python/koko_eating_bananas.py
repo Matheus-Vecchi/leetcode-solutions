@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/koko-eating-bananas/
 # Synced by: LinkCode
-# Date: 24/05/2026, 22:53:31
+# Date: 24/05/2026, 23:09:15
 # ======================================
 
 
@@ -26,7 +26,7 @@ class Solution:
 
     def validAmount(self, mid, piles, h):
         wasted_hours = 0
-            
+
         for b in piles:
             hours = (b + mid - 1) // mid
             wasted_hours += hours
