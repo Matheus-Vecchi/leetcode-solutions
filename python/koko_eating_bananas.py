@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/koko-eating-bananas/
 # Synced by: LinkCode
-# Date: 24/05/2026, 22:07:06
+# Date: 24/05/2026, 22:08:41
 # ======================================
 
 
@@ -16,7 +16,7 @@ class Solution:
         while low < high:
             mid = (low+high) // 2
             if self.validAmount(mid, piles, h):
-                ans = mid
+                ans = min(ans, mid)
                 high = mid
             else:
                 low = mid + 1
