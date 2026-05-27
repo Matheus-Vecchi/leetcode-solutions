@@ -3,29 +3,26 @@
 # Language: python3
 # Link: https://leetcode.com/problems/count-the-number-of-special-characters-ii/
 # Synced by: LinkCode
-# Date: 27/05/2026, 17:04:48
+# Date: 27/05/2026, 17:28:09
 # ======================================
 
 
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        hashmap = {}
+        uppercases = {}
         ans = set()
 
         for c in range(len(word)):
-            if word[c].islower():
-                if word[c] not in hashmap:
-                    hashmap[word[c]] = [c]
-                else:
-                    hashmap[word[c]].append(c)
+            if word[c].isupper():
+                if word[c] not in uppercases:
+                    uppercases[word[c]] = c
         
         for c in range(len(word)):
-            if word[c].isupper():
-                if word[c].lower() in hashmap:
-                    if c > hashmap[word[c].lower()][-1]:
-                        ans.add(word[c])
-                    else:
-                        del hashmap[word[c].lower()]
-        
+            if word[c].islower():
+                if word[c].upper() in uppercases:
+                    ans.add(word[c].upper())
+                    if c > uppercases[word[c].upper()]:
+                        ans.remove(word[c].upper())
+                
+                    
         return len(ans)
-                        
