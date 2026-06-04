@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-search/
 # Synced by: LinkCode
-# Date: 03/06/2026, 23:55:36
+# Date: 04/06/2026, 14:41:47
 # ======================================
 
 
