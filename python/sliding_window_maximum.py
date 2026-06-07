@@ -3,18 +3,20 @@
 # Language: python3
 # Link: https://leetcode.com/problems/sliding-window-maximum/
 # Synced by: LinkCode
-# Date: 14/05/2026, 23:38:27
+# Date: 06/06/2026, 23:01:45
 # ======================================
+
+
+from collections import deque
 
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        l = 0
         dq = deque([])
         ans = []
-        l = 0
-        r = 0
-        
-        while r < len(nums):
+
+        for r in range(len(nums)):
             while dq and nums[r] > dq[-1]:
                 dq.pop()
             dq.append(nums[r])
@@ -24,7 +26,5 @@ class Solution:
                 if nums[l] == dq[0]:
                     dq.popleft()
                 l += 1
-            
-            r += 1
         
         return ans
