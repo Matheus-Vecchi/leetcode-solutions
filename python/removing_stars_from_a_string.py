@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/removing-stars-from-a-string/
 # Synced by: LinkCode
-# Date: 12/06/2026, 15:13:53
+# Date: 12/06/2026, 15:15:21
 # ======================================
 
 
