@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/longest-common-prefix/
 # Synced by: LinkCode
-# Date: 12/06/2026, 12:55:27
+# Date: 12/06/2026, 13:01:27
 # ======================================
 
 
