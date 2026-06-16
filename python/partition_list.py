@@ -3,37 +3,27 @@
 # Language: python3
 # Link: https://leetcode.com/problems/partition-list/
 # Synced by: LinkCode
-# Date: 15/06/2026, 21:53:13
+# Date: 15/06/2026, 22:12:42
 # ======================================
 
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
-    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        dummy = ListNode(0)
-        curr1 = dummy
-        curr2 = head
+    def partition(self, head, x):
+        curr = head
+        less_dummy = ListNode(0)
+        greater_dummy = ListNode(0)
+        less_ll = less_dummy
+        greater_ll = greater_dummy 
 
-        dq = deque([])
-
-        while curr2:
-            if curr2.val >= x:
-                dq.append(curr2)
-                curr2 = curr2.next
+        while curr:
+            if curr.val < x:
+                less_ll.next = curr
+                less_ll = less_ll.next
             else:
-                dummy.next = curr2
-                curr2 = curr2.next
-                dummy = dummy.next
-        
-        for i in dq:
-            dummy.next = i
-            dummy = dummy.next
-        
-        dummy.next = None
-        
-        return curr1.next
-        
+                greater_ll.next = curr
+                greater_ll = greater_ll.next
+            curr = curr.next
+
+        greater_ll.next = None 
+        less_ll.next = greater_dummy.next
+        return less_dummy.next
