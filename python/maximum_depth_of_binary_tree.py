@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/maximum-depth-of-binary-tree/
 # Synced by: LinkCode
-# Date: 14/06/2026, 17:05:21
+# Date: 18/06/2026, 15:12:56
 # ======================================
 
 
@@ -20,3 +20,4 @@ class Solution:
             return 0
         
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+
