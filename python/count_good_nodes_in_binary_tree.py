@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/count-good-nodes-in-binary-tree/
 # Synced by: LinkCode
-# Date: 28/06/2026, 15:55:13
+# Date: 28/06/2026, 15:55:28
 # ======================================
 
 
