@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/insert-into-a-binary-search-tree/
 # Synced by: LinkCode
-# Date: 14/06/2026, 17:06:06
+# Date: 29/06/2026, 17:41:56
 # ======================================
 
 
@@ -15,7 +15,6 @@
 #         self.right = right
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        #BASE CASE
         if not root:
             return TreeNode(val)
 
@@ -23,4 +22,5 @@ class Solution:
             root.right = self.insertIntoBST(root.right, val)
         elif val < root.val:
             root.left = self.insertIntoBST(root.left, val)
+        
         return root
