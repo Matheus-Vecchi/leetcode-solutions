@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/delete-node-in-a-bst/
 # Synced by: LinkCode
-# Date: 14/06/2026, 17:06:00
+# Date: 29/06/2026, 18:32:59
 # ======================================
 
 
@@ -16,27 +16,28 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
-            return None
+            return
 
         if key > root.val:
             root.right = self.deleteNode(root.right, key)
         elif key < root.val:
             root.left = self.deleteNode(root.left, key)
         else:
-            if not root.right:
-                return root.left
-            elif not root.left:
+            if not root.left and root.right:
                 return root.right
+            elif root.left and not root.right:
+                return root.left
+            elif not root.left and not root.right:
+                return None
             else:
-                minNode = self.minNode(root.right)
-                root.val = minNode.val
-                root.right = self.deleteNode(root.right, minNode.val)
-        
+                new_node = self.findMinimun(root.right)
+                root.right = self.deleteNode(root.right, new_node.val)
+                root.val = new_node.val
+
         return root
+    
 
-
-    def minNode(self, root):
-        curr = root
-        while curr and curr.left:
-            curr = curr.left
-        return curr
+    def findMinimun(self, root):
+        while root.left:
+            root = root.left
+        return root
