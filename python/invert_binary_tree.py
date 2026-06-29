@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/invert-binary-tree/
 # Synced by: LinkCode
-# Date: 12/06/2026, 17:23:42
+# Date: 29/06/2026, 11:55:41
 # ======================================
 
 
@@ -13,16 +13,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        #base case
         if not root:
-            return None
+            return root
         
-        tmp = root.left
-        root.left = root.right
-        root.right = tmp
+        root.left, root.right = root.right, root.left
 
         self.invertTree(root.left)
         self.invertTree(root.right)
