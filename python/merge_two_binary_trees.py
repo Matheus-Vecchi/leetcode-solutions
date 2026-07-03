@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/merge-two-binary-trees/
 # Synced by: LinkCode
-# Date: 03/07/2026, 17:45:04
+# Date: 03/07/2026, 17:45:12
 # ======================================
 
 
