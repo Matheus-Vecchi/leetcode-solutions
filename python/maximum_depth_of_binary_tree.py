@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/maximum-depth-of-binary-tree/
 # Synced by: LinkCode
-# Date: 01/07/2026, 15:53:21
+# Date: 03/07/2026, 14:35:18
 # ======================================
 
 
@@ -15,14 +15,10 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        def dfs(root):
-            if not root:
-                return 0
-            
-            left = dfs(root.left)
-            right = dfs(root.right)
-            return 1 + max(right, left)
+        if not root:
+            return 0
         
-        return dfs(root)
-        
-        
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return 1 + max(left, right)
