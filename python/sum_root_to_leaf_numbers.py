@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/sum-root-to-leaf-numbers/
 # Synced by: LinkCode
-# Date: 03/07/2026, 23:06:52
+# Date: 03/07/2026, 23:21:03
 # ======================================
 
 
@@ -15,19 +15,17 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        acc = 0
         def dfs(root, number):
-            nonlocal acc
             if not root:
-                return
-
-            number = number + str(root.val)
-
-            if not root.left and not root.right:
-                acc += int(number)
+                return 0
             
-            dfs(root.left, str(number))
-            dfs(root.right, str(number))
+            number = number * 10 + root.val
+            if not root.left and not root.right:
+                return number
+            
+            left = dfs(root.left, number)
+            right = dfs(root.right, number)
+
+            return left + right
         
-        dfs(root, "")
-        return acc
+        return dfs(root, 0)
