@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/range-sum-of-bst/
 # Synced by: LinkCode
-# Date: 03/07/2026, 23:59:32
+# Date: 04/07/2026, 00:01:14
 # ======================================
 
 
@@ -23,13 +23,7 @@ class Solution:
                 return dfs(root.left)
             elif root.val < low:
                 return dfs(root.right)
-            else:
-                left = dfs(root.left)
-                right = dfs(root.right)
+            return root.val + dfs(root.left) + dfs(root.right)
 
-            if low <= root.val <= high:
-                return root.val + left + right
-            else:
-                return left + right
         
         return dfs(root)
