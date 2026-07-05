@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
 # Synced by: LinkCode
-# Date: 29/06/2026, 23:04:39
+# Date: 05/07/2026, 15:11:08
 # ======================================
 
 
@@ -15,22 +15,23 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        queue = deque([])
+        queue = deque()
         ans = []
 
         if root:
             queue.append(root)
-
+        
         while queue:
-            layer = []
+            level = []
             for _ in range(len(queue)):
                 curr = queue.popleft()
-                layer.append(curr.val)
+                level.append(curr.val)
 
                 if curr.left:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-            ans.append(layer)
-        
+            ans.append(level)
+
         return ans
+                
