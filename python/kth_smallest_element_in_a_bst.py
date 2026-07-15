@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 # Synced by: LinkCode
-# Date: 15/07/2026, 20:20:22
+# Date: 15/07/2026, 20:38:10
 # ======================================
 
 
@@ -15,14 +15,24 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        
+        count = 0
+        ans = None
+
         def dfs(root):
+            nonlocal count, ans
+
             if not root:
-                return []
+                return
             
             left = dfs(root.left)
+            if ans:
+                return
+            count += 1
+            if count == k:
+                ans = root.val
             right = dfs(root.right)
 
-            return left + [root.val] + right
+            return left or right
         
-        return dfs(root)[k-1]
+        dfs(root)
+        return ans
