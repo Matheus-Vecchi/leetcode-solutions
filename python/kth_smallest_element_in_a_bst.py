@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 # Synced by: LinkCode
-# Date: 15/07/2026, 20:39:12
+# Date: 15/07/2026, 20:40:37
 # ======================================
 
 
@@ -25,7 +25,7 @@ class Solution:
                 return
             
             dfs(root.left)
-            if ans:
+            if ans is not None:
                 return
             count += 1
             if count == k:
