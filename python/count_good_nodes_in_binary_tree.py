@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/count-good-nodes-in-binary-tree/
 # Synced by: LinkCode
-# Date: 06/07/2026, 11:32:36
+# Date: 17/07/2026, 16:09:43
 # ======================================
 
 
@@ -15,20 +15,20 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
+        
         def dfs(root, max_seen):
             if not root:
                 return 0
             
             if root.val >= max_seen:
                 max_seen = root.val
-                count = 1
+                good_node = 1
             else:
-                count = 0
+                good_node = 0
             
             left = dfs(root.left, max_seen)
             right = dfs(root.right, max_seen)
 
-            return count + left + right
-        
+            return good_node + left + right
+
         return dfs(root, root.val)
-        
