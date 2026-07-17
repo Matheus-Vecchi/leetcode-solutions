@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-right-side-view/
 # Synced by: LinkCode
-# Date: 29/06/2026, 23:07:57
+# Date: 17/07/2026, 15:18:26
 # ======================================
 
 
@@ -23,7 +23,7 @@ class Solution:
         
         while queue:
             ans.append(queue[-1].val)
-            for _ in range(len(queue)):
+            for i in range(len(queue)):
                 curr = queue.popleft()
 
                 if curr.left:
