@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
 # Synced by: LinkCode
-# Date: 05/07/2026, 15:11:08
+# Date: 18/07/2026, 15:58:19
 # ======================================
 
 
@@ -23,7 +23,7 @@ class Solution:
         
         while queue:
             level = []
-            for _ in range(len(queue)):
+            for i in range(len(queue)):
                 curr = queue.popleft()
                 level.append(curr.val)
 
@@ -32,6 +32,5 @@ class Solution:
                 if curr.right:
                     queue.append(curr.right)
             ans.append(level)
-
+        
         return ans
-                
