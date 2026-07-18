@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/average-of-levels-in-binary-tree/
 # Synced by: LinkCode
-# Date: 18/07/2026, 16:58:32
+# Date: 18/07/2026, 17:10:46
 # ======================================
 
 
@@ -23,7 +23,8 @@ class Solution:
             queue.append(root)
         
         while queue:
-            for i in range(1, len(queue) + 1):
+            level_len = len(queue)
+            for i in range(len(queue)):
                 curr = queue.popleft()
                 acc += curr.val
 
@@ -32,7 +33,8 @@ class Solution:
                 if curr.right:
                     queue.append(curr.right)
 
-            ans.append(acc / i)
+            ans.append(acc / level_len)
             acc = 0
 
         return ans
+        
