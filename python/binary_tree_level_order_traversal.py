@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
 # Synced by: LinkCode
-# Date: 18/07/2026, 16:20:59
+# Date: 18/07/2026, 16:28:48
 # ======================================
 
 
@@ -15,24 +15,24 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        dict = {}
+        levels = {}
 
         def dfs(root, level):
             if not root:
                 return
             
-            if level not in dict:
-                dict[level] = [root.val]
+            if level not in levels:
+                levels[level] = [root.val]
             else:
-                dict[level].append(root.val)
+                levels[level].append(root.val)
             
             dfs(root.left, level + 1)
             dfs(root.right, level + 1)
         
         dfs(root, 0)
-        ans = [0] * len(dict)
+        ans = [0] * len(levels)
 
-        for key, value in dict.items():
+        for key, value in levels.items():
             ans[key] = value
         
         return ans
