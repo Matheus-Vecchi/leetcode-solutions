@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/average-of-levels-in-binary-tree/
 # Synced by: LinkCode
-# Date: 18/07/2026, 17:10:54
+# Date: 18/07/2026, 17:21:35
 # ======================================
 
 
@@ -15,26 +15,27 @@
 #         self.right = right
 class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
-        queue = deque()
+        levels = []
         ans = []
-        acc = 0
 
-        if root:
-            queue.append(root)
+        def dfs(root, level):
+            if not root:
+                return
+            
+            if level == len(levels):
+                levels.append([])
+            
+            levels[level].append(root.val)
+
+            dfs(root.left, level + 1)
+            dfs(root.right, level + 1)
         
-        while queue:
-            level_len = len(queue)
-            for i in range(len(queue)):
-                curr = queue.popleft()
-                acc += curr.val
-
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
-
-            ans.append(acc / level_len)
+        dfs(root, 0)
+        
+        for level in range(len(levels)):
             acc = 0
-
-        return ans
+            for num in levels[level]:
+                acc += num
+            ans.append(acc / len(levels[level]))
         
+        return ans
