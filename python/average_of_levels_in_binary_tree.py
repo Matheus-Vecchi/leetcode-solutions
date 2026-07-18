@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/average-of-levels-in-binary-tree/
 # Synced by: LinkCode
-# Date: 18/07/2026, 17:10:46
+# Date: 18/07/2026, 17:10:54
 # ======================================
 
 
