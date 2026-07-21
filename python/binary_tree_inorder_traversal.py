@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-inorder-traversal/
 # Synced by: LinkCode
-# Date: 21/07/2026, 16:04:19
+# Date: 21/07/2026, 16:48:16
 # ======================================
 
 
@@ -15,13 +15,16 @@
 #         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        def dfs(root):
-            if not root:
-                return []
-            
-            left = dfs(root.left)
-            right = dfs(root.right)
+        stack = []
+        ans = []
+        curr = root
 
-            return left + [root.val] + right
+        while curr or stack:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            ans.append(curr.val)
+            curr = curr.right
         
-        return dfs(root)
+        return ans
