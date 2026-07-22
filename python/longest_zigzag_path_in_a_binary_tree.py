@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/
 # Synced by: LinkCode
-# Date: 22/07/2026, 17:12:45
+# Date: 22/07/2026, 17:13:10
 # ======================================
 
 
@@ -31,11 +31,7 @@ class Solution:
                 dfs(root.right, 1, 1)
             else:
                 dfs(root.left, 0, length+1)
-                dfs(root.right, 1, length+1)
-            
-            ans = max(ans, length)
-
-            
+                dfs(root.right, 1, length+1)     
         
         dfs(root, -1, 0)
         return ans
