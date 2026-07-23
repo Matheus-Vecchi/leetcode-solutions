@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 # Synced by: LinkCode
-# Date: 23/07/2026, 12:17:14
+# Date: 23/07/2026, 12:37:56
 # ======================================
 
 
@@ -25,18 +25,32 @@ class Solution:
             if root == q:
                 return q
             
-            if root.val > p.val and root.val > q.val:
-                left = dfs(root.left, p, q)
-                right = None
-            elif root.val < p.val and root.val < q.val:
-                left = None
-                right = dfs(root.right, p, q)
-            elif root.val > p.val:
-                left = dfs(root.left, p, q)
-                right = dfs(root.right, p, q)
+            left = None
+            right = None
+
+            if not p:
+                if root.val > q.val:
+                    left = dfs(root.left, None, q)
+                else:
+                    right = dfs(root.right, None, q)
+            elif not q:
+                if root.val > p.val:
+                    left = dfs(root.left, p, None)
+                else:
+                    right = dfs(root.right, p, None)
             else:
-                left = dfs(root.left, p, q)
-                right = dfs(root.right, p, q)
+                if root.val > p.val and root.val > q.val:
+                    left = dfs(root.left, p, q)
+                    right = None
+                elif root.val < p.val and root.val < q.val:
+                    left = None
+                    right = dfs(root.right, p, q)
+                elif root.val > p.val:
+                    left = dfs(root.left, p, None)
+                    right = dfs(root.right, None, q)
+                else:
+                    left = dfs(root.left, None, q)
+                    right = dfs(root.right, p, None)
             
             if left and right:
                 return root
