@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 # Synced by: LinkCode
-# Date: 23/07/2026, 12:37:56
+# Date: 23/07/2026, 12:38:16
 # ======================================
 
 
@@ -41,9 +41,7 @@ class Solution:
             else:
                 if root.val > p.val and root.val > q.val:
                     left = dfs(root.left, p, q)
-                    right = None
                 elif root.val < p.val and root.val < q.val:
-                    left = None
                     right = dfs(root.right, p, q)
                 elif root.val > p.val:
                     left = dfs(root.left, p, None)
