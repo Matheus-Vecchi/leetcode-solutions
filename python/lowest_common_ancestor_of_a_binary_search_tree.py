@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 # Synced by: LinkCode
-# Date: 23/07/2026, 12:45:07
+# Date: 23/07/2026, 12:47:21
 # ======================================
 
 
@@ -35,11 +35,6 @@ class Solution:
             else:
                 return root
 
-            if left and right:
-                return root
-            if not left:
-                return right
-            if not right:
-                return left
+            return left or right
         
         return dfs(root, p, q)
