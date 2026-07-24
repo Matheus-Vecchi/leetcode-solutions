@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/minimum-depth-of-binary-tree/
 # Synced by: LinkCode
-# Date: 23/07/2026, 22:51:14
+# Date: 23/07/2026, 23:12:47
 # ======================================
 
 
@@ -16,13 +16,14 @@
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         queue = deque()
-        level = 0
+        level = 1
 
         if root:
             queue.append(root)
+        else:
+            return 0
         
         while queue:
-            level += 1
             for _ in range(len(queue)):
                 curr = queue.popleft()
 
@@ -33,5 +34,6 @@ class Solution:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-
-        return level
+            
+            level += 1
+            
