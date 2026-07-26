@@ -3,26 +3,23 @@
 # Language: python3
 # Link: https://leetcode.com/problems/search-a-2d-matrix-ii/
 # Synced by: LinkCode
-# Date: 26/07/2026, 12:54:40
+# Date: 26/07/2026, 14:54:35
 # ======================================
 
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        for row in range(len(matrix)): # m
-            l = 0
-            r = len(matrix[row]) - 1
+        row = 0
+        col = len(matrix[0]) - 1
+        
+        while row < len(matrix) and col >= 0:
+            curr = matrix[row][col]
 
-            while l <= r: # log n
-                mid = (l+r) // 2
+            if curr == target:
+                return True
+            elif curr > target:
+                col -= 1
+            else:
+                row += 1
 
-                if matrix[row][mid] == target:
-                    return True
-                elif matrix[row][mid] > target:
-                    r = mid - 1
-                else:
-                    l = mid + 1
-            
         return False
-# time: O(m log n)
-# space: O(1)
