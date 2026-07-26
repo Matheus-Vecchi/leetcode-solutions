@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/invert-binary-tree/
 # Synced by: LinkCode
-# Date: 29/06/2026, 11:59:43
+# Date: 26/07/2026, 15:40:57
 # ======================================
 
 
@@ -16,7 +16,7 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return root
+            return
         
         root.left, root.right = root.right, root.left
 
@@ -24,3 +24,7 @@ class Solution:
         self.invertTree(root.right)
 
         return root
+    
+
+
+
