@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/binary-tree-maximum-path-sum/
 # Synced by: LinkCode
-# Date: 21/07/2026, 17:16:24
+# Date: 27/07/2026, 19:51:45
 # ======================================
 
 
@@ -26,9 +26,9 @@ class Solution:
             left = max(dfs(root.left), 0)
             right = max(dfs(root.right), 0)
 
-            ans = max(ans, left+right+root.val)
+            ans = max(ans, root.val + left + right)
 
-            return max(root.val + left, root.val + right)
-        
+            return root.val + max(left, right)
+
         dfs(root)
         return ans
