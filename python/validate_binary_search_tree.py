@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/validate-binary-search-tree/
 # Synced by: LinkCode
-# Date: 30/07/2026, 21:12:00
+# Date: 30/07/2026, 21:41:50
 # ======================================
 
 
@@ -15,19 +15,21 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        arr = []
         
-        def dfs(root, min_val, max_val):
+        def dfs(root):
+            nonlocal arr
+
             if not root:
                 return True
             
-            if root.val >= max_val:
+            left = dfs(root.left)
+            if arr and root.val <= arr[-1]:
                 return False
-            elif root.val <= min_val:
-                return False
-            
-            left = dfs(root.left, min_val, root.val)
-            right = dfs(root.right, root.val, max_val)
+            arr.append(root.val)
+            right = dfs(root.right)
 
             return left and right
+
+        return dfs(root)
         
-        return dfs(root, -999999999999999, 999999999999999)
