@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/remove-element/
 # Synced by: LinkCode
-# Date: 07/07/2026, 14:42:53
+# Date: 05/08/2026, 11:50:20
 # ======================================
 
 
@@ -13,7 +13,7 @@ class Solution:
 
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[i], nums[k] = nums[k], nums[i]
+                nums[k], nums[i] = nums[i], nums[k]
                 k += 1
         
         return k
