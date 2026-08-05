@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/minimum-window-substring/
 # Synced by: LinkCode
-# Date: 27/05/2026, 13:33:02
+# Date: 05/08/2026, 20:50:14
 # ======================================
 
 
@@ -11,46 +11,54 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if len(t) > len(s):
             return ""
-        
-        l = 0
-        hashmap = {}
-        ans = ""
-        
+
+        window = {}
         hashmap_t = {}
+        ans = s + "a"
+        have = 0
+        contains = True
 
-        for c in t:
-            if c not in hashmap_t:
-                hashmap_t[c] = 1
+        l = 0
+
+        for i in t:
+            if i not in hashmap_t:
+                hashmap_t[i] = 1
             else:
-                hashmap_t[c] += 1
-        
+                hashmap_t[i] += 1
+
         for r in range(len(s)):
-            if s[r] in hashmap_t:
-                if s[r] in hashmap:
-                    hashmap[s[r]] += 1
-                else:
-                    hashmap[s[r]] = 1
-            else:
-                while l <= r and s[l] not in hashmap:
-                    l += 1
+            if not window and s[r] not in hashmap_t:
+                l += 1
             
-            while all(hashmap.get(k, 0) >= v for k, v in hashmap_t.items()):
-                if len(s[l:r]) < len(ans) or ans == "":
-                    ans = s[l:r+1]
+            if s[r] in hashmap_t:
+                if s[r] not in window:
+                    window[s[r]] = 1
+                else:
+                    window[s[r]] += 1
+                have += 1
 
-                if s[l] in hashmap:
-                    if hashmap[s[l]] == 1:
-                        del hashmap[s[l]]
+                while have >= len(t) and len(window) == len(hashmap_t):
+                    contains = True
+                    for k, v in window.items():
+                        if window[k] < hashmap_t[k]:
+                            contains = False
+                            break
+
+                    if contains:
+                        if len(s[l:r]) < len(ans):
+                            ans = s[l:r+1]
+                        if window[s[l]] == 1:
+                            del window[s[l]]
+                        else:
+                            window[s[l]] -= 1
+                        have -= 1
+                        l += 1
+                        while l < len(s) and s[l] not in hashmap_t:
+                            l += 1
                     else:
-                        hashmap[s[l]] -= 1
-                l += 1                
-                while l <= r and s[l] not in hashmap_t:
-                    l += 1
+                        break
         
-        if ans == "":
+        if ans == s + "a":
             return ""
         else:
             return ans
-        
-        #{a:1, b:1, c:1}
-        #{a:1, b:1, c:1}
