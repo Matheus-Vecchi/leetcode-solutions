@@ -3,21 +3,16 @@
 # Language: python3
 # Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 # Synced by: LinkCode
-# Date: 09/06/2026, 22:56:27
+# Date: 05/08/2026, 15:13:20
 # ======================================
 
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        slow = 0
-        fast = 0
-
-        while fast < len(nums):
-            if nums[slow] != nums[fast]:
-                slow += 1
-                nums[slow] = nums[fast]
-            
-            fast += 1
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != nums[k]:
+                k += 1
+                nums[k], nums[i] = nums[i], nums[k]
         
-        return len(nums[:slow+1])
-        
+        return k + 1
