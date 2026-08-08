@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/reorder-list/
 # Synced by: LinkCode
-# Date: 26/05/2026, 21:22:04
+# Date: 07/08/2026, 21:24:06
 # ======================================
 
 
@@ -12,35 +12,47 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        slow, fast = head, head
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        slow = head
+        fast = head
 
-        while fast and fast.next:
+        while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
-        
-        curr = slow.next
-        slow.next = None
-        prev = slow
 
-        while curr != None:
+        mid = slow.next
+        slow.next = None
+    
+
+        curr = mid
+        prev = None
+        while curr:
             aux = curr.next
             curr.next = prev
             prev = curr
             curr = aux
-        
-        curr1 = head
-        curr2 = prev
+        l2 = prev
 
-        while curr2 != slow:
-            aux1 = curr1.next
-            aux2 = curr2.next
+        dummy = head
+        l1 = head
+        while l1 and l2:
+            aux1 = l1.next
+            aux2 = l2.next
+
+            l1.next = l2
+            l2.next = aux1
             
-            curr1.next = curr2
-            curr2.next = aux1
+            l1 = aux1
+            l2 = aux2
+        
+        return dummy
 
-            curr1 = aux1
-            curr2 = aux2
+
+
+
+
         
