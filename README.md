@@ -14,8 +14,8 @@ Started: March 2026 · Language: Python
 | Stack | ✅ |
 | Sliding Window | ✅ |
 | Binary Search | ✅ |
-| Linked Lists | 🔄 |
-| Trees | ⬜ |
+| Linked Lists | ✅ |
+| Trees | 🔄 |
 | Heap / Priority Queue | ⬜ |
 | Graphs | ⬜ |
 | Dynamic Programming | ⬜ |
