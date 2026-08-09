@@ -3,24 +3,26 @@
 # Language: python3
 # Link: https://leetcode.com/problems/number-of-zero-filled-subarrays/
 # Synced by: LinkCode
-# Date: 11/06/2026, 22:50:26
+# Date: 09/08/2026, 11:59:41
 # ======================================
 
 
 class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
-        i = 0
-        count = 1
-        ans = 0
-
-        while i < len(nums):
-            count = 1
-            while i < len(nums) and nums[i] == 0:
-                ans += count 
-                count += 1
-                
-                i += 1
-            
-            i += 1
+        acc = 0 # 1
+        ans = 0 # 3
+        l = 0 # 5
+        for r in range(len(nums)):
+            if nums[r] == 0:
+                if nums[l] != 0:
+                    l = r
+                acc = acc + r - l + 1
+            else:
+                ans += acc
+                acc = 0
+                l = r
         
+        if acc != 0:
+            ans += acc
+            
         return ans
