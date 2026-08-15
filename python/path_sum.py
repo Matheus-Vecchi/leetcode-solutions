@@ -3,7 +3,7 @@
 # Language: python3
 # Link: https://leetcode.com/problems/path-sum/
 # Synced by: LinkCode
-# Date: 07/07/2026, 16:07:44
+# Date: 14/08/2026, 23:16:30
 # ======================================
 
 
@@ -16,20 +16,16 @@
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
-        def dfs(root, current_sum):
+        def dfs(root, acc):
             if not root:
                 return False
             
-            current_sum += root.val
-
-            left = dfs(root.left, current_sum)
-            right = dfs(root.right, current_sum)
-
-            if not root.left and not root.right:
-                if current_sum == targetSum:
-                    return True
-                else:
-                    return False
+            acc += root.val
+            if not root.left and not root.right and acc == targetSum:
+                return True
+            
+            left = dfs(root.left, acc)
+            right = dfs(root.right, acc)
 
             return left or right
         
