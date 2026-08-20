@@ -3,34 +3,30 @@
 # Language: python3
 # Link: https://leetcode.com/problems/longest-common-prefix/
 # Synced by: LinkCode
-# Date: 12/06/2026, 13:01:27
+# Date: 20/08/2026, 16:19:48
 # ======================================
 
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        string = 1
-        char = 0
-
-        smaller_string = strs[0]
-        smallest_string = len(strs[0])
-        for i in strs:
-            if len(i) < smallest_string:
-                smallest_string = len(i)
-                smaller_string = i
-
-
-
-        while char < smallest_string:
-            while string < len(strs):
-                if strs[0][char] == strs[string][char]:
-                    string += 1
-                else:
-                    return strs[0][:char]
-            string = 1
-            char += 1
+        smallest = strs[0]
         
-        return smaller_string
+        for i in range(len(strs)):
+            if len(strs[i]) < len(smallest):
+                smallest = strs[i]
         
+        i = 0
+        j = 1
 
+        while i < len(smallest): # i = 0
+            while j < len(strs): # j = 1
+                if strs[0][i] != strs[j][i]:
+                    return strs[0][:i]
+                j += 1
+            i += 1
+            j = 1
+        
+        return smallest
+
+        
 
