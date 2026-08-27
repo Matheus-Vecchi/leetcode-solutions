@@ -3,22 +3,21 @@
 # Language: python3
 # Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 # Synced by: LinkCode
-# Date: 04/06/2026, 00:25:15
+# Date: 27/08/2026, 14:04:34
 # ======================================
 
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         buy = 0
-        sell = 0
-        profit = 0
+        sell = 1
+        max_profit = 0
 
         while sell < len(prices):
-            if prices[sell] > prices[buy]:
-                profit = max(profit, prices[sell] - prices[buy])
+            if prices[buy] < prices[sell]:
+                max_profit = max(max_profit, prices[sell] - prices[buy])
             else:
                 buy = sell
-            
             sell += 1
-        
-        return profit
+
+        return max_profit
